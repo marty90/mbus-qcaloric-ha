@@ -1,0 +1,15 @@
+[Unit]
+Description=Wireless M-Bus heat cost allocators to Home Assistant (wmbusmeters)
+After=network-online.target mosquitto.service rtl_433.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=pi
+WorkingDirectory=/home/pi/mbus-qcaloric-ha
+ExecStart=/usr/bin/python3 /home/pi/mbus-qcaloric-ha/mbus-qcaloric-ha.py @/home/pi/mbus-qcaloric-ha/sensors.args
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

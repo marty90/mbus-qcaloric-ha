@@ -1,0 +1,5 @@
+# Local configuration with real meter names/IDs
+sensors.args
+# Captured telegrams
+*.log
+__pycache__/

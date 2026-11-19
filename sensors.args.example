@@ -1,0 +1,5 @@
+--sensor=heatmeter-kitchen:12345678
+--sensor=heatmeter-living-room:12345679
+--sensor=heatmeter-bathroom:12345680
+--mqtt-host=127.0.0.1
+--set-date-indices=1,8
