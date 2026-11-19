@@ -141,7 +141,7 @@ mosquitto_sub -h 127.0.0.1 -t rtl_433/+/devices/+/Wireless-MBus/+/data > mbus.lo
 Run `wmbusmeters --analyze` on each telegram, to find out meter IDs, drivers and fields:
 
 ```bash
-cat mbus.log | xargs -I {} -- bash -c "echo {} ; wmbusmeters --analyze {}"
+cat mbus.log | xargs -I {} -- bash -c "echo {} ; wmbusmeters --analyze=qcaloric {}"
 ```
 
 (With the snap package you may need the full path of the binary, e.g. `/snap/wmbusmeters/current/usr/bin/wmbusmeters`.)
