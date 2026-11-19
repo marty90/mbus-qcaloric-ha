@@ -146,6 +146,15 @@ cat mbus.log | xargs -I {} -- bash -c "echo {} ; wmbusmeters --analyze=qcaloric 
 
 (With the snap package you may need the full path of the binary, e.g. `/snap/wmbusmeters/current/usr/bin/wmbusmeters`.)
 
+### Repeated (relayed) telegrams with a longer header
+
+Sometimes you can capture telegrams that have been repeated by another device and are longer, since they carry an extra 37-character header in front of the original telegram.
+These telegrams are currently **not handled** by the script, but you can analyze them by stripping the header:
+
+```bash
+cat mbus.log | cut -c 37- | xargs -I {} -- bash -c "echo {} ; wmbusmeters --analyze=qcaloric {}" | less
+```
+
 ### Replay the saved telegrams
 
 Feed the saved telegrams to the script instead of MQTT, to check that all your meters are decoded. With `--dry-run` nothing is published, messages are printed on stdout:
