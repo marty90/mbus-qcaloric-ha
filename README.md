@@ -1,4 +1,4 @@
-# mbus-qcaloric-ha
+# M-Bus Q caloric Decoder for Home Assistant
 
 Bring Wireless M-Bus **heat cost allocators** (e.g. Qundis Q caloric, `qcaloric` driver) into **Home Assistant** using an SDR dongle.
 
