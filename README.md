@@ -96,17 +96,22 @@ Each decoded telegram is published on `wmbusmeters/<name>/<id>`, for example on 
 Unless `--no-discovery` is given, at startup the script publishes retained discovery configs on
 `homeassistant/sensor/<id>_<suffix>/config` for these sensors of each meter:
 
-| Sensor | JSON field |
-|---|---|
-| Current consumption (HCA) | `current_consumption_hca` |
-| Consumption at set date (HCA) | `consumption_at_set_date_hca` |
-| Set date | `set_date` |
-| Consumption at set date N (HCA) | `consumption_at_set_date_N_hca` (for each N in `--set-date-indices`) |
-| Set date N | `set_date_N` (for each N in `--set-date-indices`) |
-| Device date and time | `device_datetime` |
-| Last update | `timestamp` |
-| Error date | `error_date` |
-| Status | `status` |
+| Sensor | JSON field | `state_class` |
+|---|---|---|
+| Current consumption (HCA) | `current_consumption_hca` | `total_increasing` |
+| Consumption at set date (HCA) | `consumption_at_set_date_hca` | `total_increasing` |
+| Set date | `set_date` | |
+| Consumption at set date N (HCA) | `consumption_at_set_date_N_hca` (for each N in `--set-date-indices`) | `total_increasing` |
+| Set date N | `set_date_N` (for each N in `--set-date-indices`) | |
+| Device date and time | `device_datetime` | |
+| Last update | `timestamp` | |
+| Error date | `error_date` | |
+| Status | `status` | |
+
+All HCA sensors use `state_class: total_increasing`: they are cumulative counters, and the
+heat cost allocator resets `current_consumption_hca` at the start of each billing period.
+With `total_increasing`, Home Assistant treats a drop in value as a reset rather than
+negative consumption, so long-term statistics stay correct.
 
 ## Running as a systemd service
 
