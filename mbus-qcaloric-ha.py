@@ -29,7 +29,7 @@ log = logging.getLogger("mbus-qcaloric-ha")
 # (suffix, json_key, label_en, label_it, unit, state_class, device_class)
 # ----------------------------------------------------------------------------
 FIXED_SENSORS = [
-    ("current", "current_consumption_hca", "Current consumption", "Consumo Corrente", "HCA", "measurement", None),
+    ("current", "current_consumption_hca", "Current consumption", "Consumo Corrente", "HCA", "total_increasing", None),
     ("set_date", "consumption_at_set_date_hca", "Consumption at set date", "Consumo a Data di Riferimento", "HCA", "total_increasing", None),
     ("set_date_value", "set_date", "Set date", "Data di Riferimento", None, None, None),
     ("device_datetime", "device_datetime", "Device date and time", "Data e Ora Dispositivo", None, None, None),
